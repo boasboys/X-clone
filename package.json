@@ -22,7 +22,5 @@
     "url": "https://github.com/boasboys/X-clone/issues"
   },
   "homepage": "https://github.com/boasboys/X-clone#readme",
-  "devDependencies": {
-    "vite": "^6.0.7"
-  }
+  
 }
