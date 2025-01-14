@@ -5,8 +5,8 @@
   "main": "Backend/server.js",
   "private": true,
   "scripts": {
-    "install-all": "npm install --prefix Backend && npm install --prefix Frontend",
-    "build": "npm install --prefix Frontend && npm run build --prefix Frontend",
+    "postinstall": "npm install --prefix Frontend",
+  "build": "npm run build --prefix Frontend",
     "start": "node Backend/server.js",
     "dev": "concurrently \"npm start --prefix Backend\" \"npm start --prefix Frontend\""
   },
