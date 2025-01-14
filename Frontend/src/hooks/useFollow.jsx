@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useFollow = () => {
 	const queryClient = useQueryClient();
     const {data:authUser} = useQuery({queryKey:["authUser"]})
-    console.log("From Hook",authUser)
+    // console.log("From Hook",authUser)
 	const { mutate: follow, isPending } = useMutation({
 		mutationFn: async (userId) => {
 			try {
@@ -20,7 +20,7 @@ const useFollow = () => {
                 }
 				return userId
 			} catch (error) {
-				console.log("catch" ,error)
+				// console.log("catch" ,error)
                 throw new Error(error.message);
 			}
 		},

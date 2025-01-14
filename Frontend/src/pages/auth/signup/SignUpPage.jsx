@@ -38,7 +38,7 @@ const SignUpPage = () => {
 					
 					
 			} catch (error) {
-				console.log(error.message)
+				// console.log(error.message)
 				throw  error
 				
 			}
@@ -50,7 +50,7 @@ const SignUpPage = () => {
 	})
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
+		// console.log(formData);
 		mutate(formData)
 	};
 

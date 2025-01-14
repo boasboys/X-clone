@@ -16,7 +16,7 @@ const RightPanel = () => {
 				if (!res.ok) {
 					throw new Error(data.error || "Something went wrong!");
 				}
-				console.log(typeof data.suggestions)
+				// console.log(typeof data.suggestions)
 				return data.suggestions;
 			} catch (error) {
 				throw new Error(error.message);
@@ -28,10 +28,10 @@ const RightPanel = () => {
 	
 	if(!isLoading)
 	{
-		console.log(typeof suggestedUsers,suggestedUsers)
+		// console.log(typeof suggestedUsers,suggestedUsers)
 	}
 if (!isLoading && suggestedUsers?.length === 0) return <div className='md:w-64 w-0'></div>;
-console.warn(suggestedUsers)
+// console.warn(suggestedUsers)
 	return (
 		<div className='hidden lg:block my-4 mx-2'>
 			<div className='bg-[#16181C] p-4 rounded-md sticky top-2'>

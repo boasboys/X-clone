@@ -17,7 +17,7 @@ import { MdEdit } from "react-icons/md";
 import useFollow from "../../hooks/useFollow";
 
 const ProfilePage = () => {
-  console.log("=== ProfilePage component mounted ==="); // Debug
+  // console.log("=== ProfilePage component mounted ==="); // Debug
 // const {mutate:updateImg} = useMutation({
 // 	mutationKey:["updateUser"],
 // 	mutationFn: async (profileImg,coverImg) => {
@@ -56,14 +56,14 @@ const ProfilePage = () => {
   // Grab the username from the URL
   const {username:userId} = useParams();
   
-  console.log("Current userId param:", userId); // Debug
+  // console.log("Current userId param:", userId); // Debug
 
   // Auth User Query
   const { data: authUser } = useQuery({
     queryKey: ["authUser"],
     // If you have a queryFn for authUser, place it here; or if it’s set up globally, that's fine.
   });
-  console.log("authUser from useQuery:", authUser); // Debug
+  // console.log("authUser from useQuery:", authUser); // Debug
 
   // Follow / Unfollow Hook
   const { follow, isPending } = useFollow();
@@ -79,7 +79,7 @@ const ProfilePage = () => {
     queryKey: ["userProfile"],
     queryFn: async () => {
       try {
-        console.log("=== Fetching user profile for:", userId); // Debug
+        // console.log("=== Fetching user profile for:", userId); // Debug
         const res = await fetch(`/api/user/profile/${userId}`);
         const data = await res.json();
 
@@ -88,7 +88,7 @@ const ProfilePage = () => {
           throw new Error(data.error || "Something went wrong");
         }
 
-        console.log("Fetched user profile successfully:", data); // Debug
+        // console.log("Fetched user profile successfully:", data); // Debug
         return data;
       } catch (err) {
         console.log("Error in userProfile queryFn:", err); // Debug
@@ -108,7 +108,7 @@ const ProfilePage = () => {
 
   // Check if the profile belongs to the authenticated user
   const isMyProfile = authUser?._id === userId;
-  console.log("Is this my profile?", isMyProfile); // Debug
+  // console.log("Is this my profile?", isMyProfile); // Debug
 
   // For UI: year user joined
   let Year = authUser ? new Date(authUser.createdAt).getFullYear() : "";
@@ -117,7 +117,7 @@ const ProfilePage = () => {
  	Year =   Month + " " + Year
   // useEffect to refetch if the username changes
   useEffect(() => {
-    console.log("useEffect -> username changed or force refetch");
+    // console.log("useEffect -> username changed or force refetch");
     refetch();
   }, [userId, refetch]);
 
@@ -125,7 +125,7 @@ const ProfilePage = () => {
   const handleImgChange = (e, state) => {
     const file = e.target.files[0];
     if (file) {
-      console.log("Selected file for", state, ":", file.name); // Debug
+      // console.log("Selected file for", state, ":", file.name); // Debug
       const reader = new FileReader();
       reader.onload = () => {
         if (state === "coverImg") {
@@ -193,7 +193,7 @@ const ProfilePage = () => {
 
   // For debugging feedType changes
   const changeFeedType = (type) => {
-    console.log("Switching feedType from", feedType, "to", type); // Debug
+    // console.log("Switching feedType from", feedType, "to", type); // Debug
     setFeedType(type);
   };
 

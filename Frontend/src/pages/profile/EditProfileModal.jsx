@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const EditProfileModal = ({user,profileImg}) => {
-	console.log("hooleh",user)
+	// console.log("hooleh",user)
 	const queryClient = useQueryClient()
 	
 	const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const EditProfileModal = ({user,profileImg}) => {
 		// profileImg: user.profileImg,
 		// coverImg: user.coverImg
 	});
-	console.log("hello",formData)
+	// console.log("hello",formData)
 	// EditProfileModal.jsx (snippet)
 const { mutate: update,isLoading } = useMutation({
 	mutationFn: async (formData) => {
