@@ -8,8 +8,12 @@ import dotenv, { parse } from "dotenv"
  import notificationRoutes from "../backend/routes/notification.routes.js"
  import cors from "cors"
   import path from "path"
+  import { fileURLToPath } from "url";
+
  import { v2 as cloudinary } from "cloudinary"
-dotenv.config()
+ const __filename = fileURLToPath(import.meta.url);
+ const __dirname = path.dirname(__filename);
+ dotenv.config()
 cloudinary.config({
     cloud_name:process.env.CLOUD_NAME,
     api_key:process.env.CLOUD_API,
