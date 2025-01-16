@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js",
-    "build": "echo 'No build step needed'"
+    "dev": "npm install express && nodemon backend/server.js",
+    "start": "npm install express && node backend/server.js",
+    "build": "npm install express",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
