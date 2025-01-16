@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "npm install express && nodemon backend/server.js"
+    "dev": " && nodemon backend/server.js",
+    "start": "npm install express"
   },
   "keywords": [],
   "author": "",
