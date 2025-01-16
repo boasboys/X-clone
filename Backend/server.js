@@ -5,14 +5,13 @@ import dotenv, { parse } from "dotenv"
  import connectMongoDB from "./db/connectMongoDB.js"
  import cookieParser from "cookie-parser"
  import userRoutes from "./routes/user.routes.js"
- import notificationRoutes from "../backend/routes/notification.routes.js"
+ import notificationRoutes from "./routes/notification.routes.js"
  import cors from "cors"
   import path from "path"
   import { fileURLToPath } from "url";
-
+  import User from "./models/user.model.js"
  import { v2 as cloudinary } from "cloudinary"
- const __filename = fileURLToPath(import.meta.url);
- const __dirname = path.dirname(__filename);
+ 
  dotenv.config()
 cloudinary.config({
     cloud_name:process.env.CLOUD_NAME,
@@ -21,7 +20,8 @@ cloudinary.config({
 })
 const app = express()
 const URI  = process.env.MONGO_DB_URI
-
+const __filename = fileURLToPath(import.meta.url);
+ const __dirname = path.dirname(__filename);
 const port = 8004
 app.use(cors({
     origin: "http://localhost:3000", // Replace with your frontend's origin
@@ -36,13 +36,43 @@ app.use("/api/auth",authRoutes)
 app.use("/api/user",userRoutes)
 app.use("/api/posts",postRoutes)
 app.use ("/api/notification",notificationRoutes)
+app.get("/test", async (req, res) => {
+    try {
+      const userId = "6788b547528d9fddc4ef36e7"; // Replace with a valid ObjectId
+      console.log("Testing database query for user ID:", userId);
+  
+      const user = await User.findById(userId);
+      console.log("User found:", user);
+  
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      res.status(200).json(user);
+    } catch (error) {
+      console.error("Error fetching user:", error.message);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../Frontend/dist', 'index.html'));
   });
-app.listen(port,()=>
-{
-    console.log(`Server is running on port ${port} `)
-    connectMongoDB()
-}
-) 
 
+
+  
+
+
+  (async () => {
+    try {
+      await connectMongoDB(); // Ensure MongoDB connection is established
+      console.log("MongoDB connected successfully.");
+  
+      app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+      });
+    } catch (error) {
+      console.error("Failed to connect to MongoDB:", error.message);
+      process.exit(1); // Exit process if the database connection fails
+    }
+  })();

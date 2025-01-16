@@ -19,7 +19,7 @@ email:{
 password: {
     type:String,
     required:true,
-    unique:true,
+    
     minLength:6
 },
 likedPosts: [
