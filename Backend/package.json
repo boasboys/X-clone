@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "npm install express &&  nodemon backend/server.js",
-    "start": "npm install express ",
-    "build": "npm install express"
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "echo 'No build step needed'"
   },
   "keywords": [],
   "author": "",
