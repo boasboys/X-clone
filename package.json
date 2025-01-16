@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "postinstall": "npm install --prefix Frontend",
-  "build": "npm run build --prefix Frontend",
+    "build": "npm run build --prefix Frontend",
     "start": "node Backend/server.js",
     "dev": "concurrently \"npm start --prefix Backend\" \"npm start --prefix Frontend\""
   },
@@ -21,6 +21,8 @@
   "bugs": {
     "url": "https://github.com/boasboys/X-clone/issues"
   },
-  "homepage": "https://github.com/boasboys/X-clone#readme"
-  
+  "homepage": "https://github.com/boasboys/X-clone#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
